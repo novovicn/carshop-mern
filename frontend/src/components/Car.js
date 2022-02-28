@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './Car.css'
-import { db } from '../firebase';
 
 
 

@@ -3,7 +3,6 @@ import "./Header.css";
 import logo from "../img/logobmw1.png";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import { auth } from "../firebase";
 
 function Header(props) {
 
