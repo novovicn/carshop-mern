@@ -8,6 +8,8 @@ const app = express();
 
 connectDB();
 
+app.use(express.json());
+
 app.use('/api/users', userRoutes);
 app.use('/api/cars', carRoutes);
 
