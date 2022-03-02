@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
-import { auth } from './firebase'; 
 import { connect } from "react-redux";
 import FindCar from "./pages/FindCar";
 import Sell from "./pages/Sell";
@@ -18,21 +17,6 @@ function App(props) {
 const [smallMenu, setSmallMenu] = useState(false);
 const [open, setOpen] = useState('');
 
-  useEffect(() => {
-    // will only run once when the app component loads
-    smallNavHandler();
-    setOpen('');
-    setSmallMenu(false);
-    auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>>", authUser);
-      if (authUser) {
-        props.onLogUserIn(authUser.email);
-      } else {
-        // the user is logged out
-        props.onLogUserIn(null);
-      }
-    });
-  }, []);
 
   const smallNavHandler = () => {
     if(open){

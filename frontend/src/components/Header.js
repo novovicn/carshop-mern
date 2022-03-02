@@ -8,7 +8,6 @@ function Header(props) {
 
   const userLogout = () => {
     if(props.user){
-      auth.signOut();
       props.onLogUserOut(null);
     }
   }

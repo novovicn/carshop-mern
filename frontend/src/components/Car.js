@@ -45,8 +45,6 @@ function Car(props) {
         let ask = window.confirm('Are you sure you want to delete?')
         if(!ask){
             return 
-        }else{
-            db.collection("cars").doc(props.id).delete()
         }
     }
 

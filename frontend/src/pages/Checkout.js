@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./Checkout.css";
-import { db } from '../firebase';
 
 
 function Checkout(props) {
@@ -15,7 +14,6 @@ function Checkout(props) {
 
   const handleBuy = () => {
     console.log(props.car.id);
-    db.collection('cars').doc(props.car.id).update({sold: true});
     // alert('car bought');
     // history.push('/findcar');
   }
