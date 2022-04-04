@@ -2,9 +2,10 @@
   "name": "used-cars-sale",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://127.0.0.1:5000/",
+  "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
+    "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",

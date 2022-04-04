@@ -12,7 +12,7 @@ import Checkout from "./pages/Checkout";
 import SmallNav from './components/SmallNav';
 
 
-function App(props) {
+function App() {
 
 const [smallMenu, setSmallMenu] = useState(false);
 const [open, setOpen] = useState('');
