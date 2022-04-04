@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { registerUser } from '../features/auth/authSlice';
 import './Auth.css';
 
 function Auth(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState('');
   const [isReg, setIsReg] = useState(false);
@@ -36,22 +39,9 @@ function Auth(props) {
 
   const register = (e) => {
     e.preventDefault();
-
-    fetch('/register', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        'email': email,
-        'password': password
-      }),
-    })
-      .then(response => {
-        history.push('/');
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
+    //TODO: create name field
+    const name = 'Test Name'
+    dispatch(registerUser({name, email, password}));
   };
 
   return (

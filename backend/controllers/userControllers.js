@@ -7,6 +7,11 @@ const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body;
     console.log(name, email, password);
     
+    if(!name || !email || !password){
+        res.status(400)
+        throw new Error('Please populate all fields.')
+    }
+    
     const userExists = await User.findOne({email});
     if(userExists){
         res.status(400).json({message: 'Email already in use!'})
@@ -14,7 +19,7 @@ const registerUser = asyncHandler( async (req, res) => {
     const user = await User.create({email, name, password});
 
     if(user){
-        res.json({
+        res.status(201).json({
             _id: user._id,
             name: user,name,
             email: user.email,
