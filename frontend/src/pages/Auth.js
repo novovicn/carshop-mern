@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerUser } from '../features/auth/authSlice';
+import { registerUser, login } from '../features/auth/authSlice';
 import './Auth.css';
 
 function Auth(props) {
@@ -17,24 +17,7 @@ function Auth(props) {
 
   const signIn = (e) => {
     e.preventDefault();
-
-    fetch('/auth', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        'email': email,
-        'password': password
-      }),
-    })
-      .then(response => response.json())
-        //history.push('/');
-      .then(data => {
-        sessionStorage.setItem('cs_access_token', data.access_token); 
-        sessionStorage.setItem('cs_refresh_token', data.refresh_token);  
-      })
-      .catch((error) => console.log(error));
+    dispatch(login({email, password}))
   };
 
   const register = (e) => {
