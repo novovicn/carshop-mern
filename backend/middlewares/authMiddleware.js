@@ -1,8 +1,8 @@
-import asyncHandler from 'express-async-handler';
-import jwt from 'jsonwebtoken';
+const asyncHandler = require('express-async-handler');
+const jwt = require('jsonwebtoken');
 
 
-const protect = asyncHandler( async (req, res, next) => {
+const protect = asyncHandler ( async (req, res, next) => {
     let token;
     if(req.headers.authorization && reqq.headers.authorization.startsWith('Bearer')){
         try {
