@@ -2,9 +2,9 @@ const asyncHandler = require('express-async-handler');
 const Car = require('../models/carModel');
 
 const addCar = asyncHandler(async (req, res) => {
-  const { brand, model, year, image, mileage, VIN, price } = req.body;
+  const { brand, model, year, image, mileage, price } = req.body;
 
-  if(!brand || !model ||!year || !mileage ||!VIN ||!price){
+  if(!brand || !model ||!year || !mileage || !price){
     res.status(400)
     throw new Error('Please populate all required fields');
   }
@@ -17,7 +17,6 @@ const addCar = asyncHandler(async (req, res) => {
     year,
     image,
     mileage,
-    VIN,
     price,
   });
 

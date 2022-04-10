@@ -21,10 +21,6 @@ const carShcema = mongoose.Schema({
     image: {
         type: String
     },
-    VIN: {
-        type: String,
-        required: true
-    },
     mileage: {
         type: Number,
         required: true
