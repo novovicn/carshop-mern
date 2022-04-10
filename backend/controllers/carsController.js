@@ -29,7 +29,8 @@ const addCar = asyncHandler(async (req, res) => {
 });
 
 const getCars = asyncHandler(async (req, res) => {
-  res.json('cars can be found here');
+  const cars = await Car.find();
+  res.status(200).json(cars);
 });
 
 module.exports = {
