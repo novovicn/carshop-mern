@@ -7,7 +7,7 @@ import Auth from "./pages/Auth";
 import { connect } from "react-redux";
 import FindCar from "./pages/FindCar";
 import AddCar from "./pages/AddCar";
-import MoreInfo from "./pages/MoreInfo";
+import CarDetails from "./pages/CarDetails";
 import Checkout from "./pages/Checkout";
 import SmallNav from './components/SmallNav';
 
@@ -40,15 +40,13 @@ const [open, setOpen] = useState('');
           <Route path="/auth">
             <Auth />
           </Route>
-          <Route path="/findcar">
+          <Route path="/cars" exact>
             <FindCar />
           </Route>
           <Route path="/sellcar">
             <AddCar />
           </Route>
-          <Route path="/more-info">
-            <MoreInfo/>
-          </Route>
+          <Route path="/cars/:id" component={CarDetails}/>
           <Route path="/checkout">
             <Checkout/>
           </Route>

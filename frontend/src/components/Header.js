@@ -28,7 +28,7 @@ function Header(props) {
       <div className="header__secondRow">
         <Link to="/">Home</Link>
         <Link to="/sellcar">Sell car</Link>
-        <Link to="/findcar">Find car</Link>
+        <Link to="/cars">Find car</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
       </div>

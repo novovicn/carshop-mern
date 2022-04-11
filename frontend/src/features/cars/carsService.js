@@ -7,6 +7,11 @@ const getCars = async () => {
   return response.data;
 };
 
+const getSingleCar = async (id) => {
+  const response = await axios.get(API_URL+id);
+  return response.data;
+};
+
 const addCar = async (carData, token) => {
   const config = {
     headers: {
@@ -18,9 +23,9 @@ const addCar = async (carData, token) => {
   return response.data;
 };
 
-
  const carsService = {
      getCars,
+     getSingleCar,
      addCar
  }
 

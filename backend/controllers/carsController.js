@@ -33,7 +33,19 @@ const getCars = asyncHandler(async (req, res) => {
   res.status(200).json(cars);
 });
 
+const getSingleCar = asyncHandler(async (req, res) => {
+  const car = await Car.findById(req.params.id);
+  
+  if(car){
+    res.status(200).json(car);
+  }else{
+    res.status(400)
+    throw new Error('Car not found');
+  }
+});
+
 module.exports = {
   addCar,
   getCars,
+  getSingleCar
 };

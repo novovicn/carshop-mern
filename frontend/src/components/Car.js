@@ -55,7 +55,7 @@ function Car(props) {
 
     const handleMoreInfo = () => {
         addCarToState();
-        history.push('/more-info');
+        history.push(`/cars/${props.id}`);
     }
 
     return (
