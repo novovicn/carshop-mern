@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { addCar } from '../features/cars/carsSlice';
 
 const useForm = (callback, validate) => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     brand: '',
     model: '',
     year: '',
     imageURL: '',
     mileage: '',
-    vin: '',
     price: '',
   });
   const history = useHistory();
@@ -43,19 +45,7 @@ const useForm = (callback, validate) => {
         ...values,
       };
       console.log(car);
-      const jwt_token = sessionStorage.getItem('cs_access_token');
-      console.log(jwt_token);
-      fetch('/cars', {
-        headers: {
-          'accepts': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${jwt_token}`
-        },
-        method: 'POST',
-        body: JSON.stringify(car),
-      }).then((response) => console.log(response));
-      console.log('done');
-      //history.replace('/findcar');
+      dispatch(addCar(car));
     }
   }, [errors]);
 

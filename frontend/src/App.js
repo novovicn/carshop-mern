@@ -6,7 +6,7 @@ import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
 import { connect } from "react-redux";
 import FindCar from "./pages/FindCar";
-import Sell from "./pages/Sell";
+import AddCar from "./pages/AddCar";
 import MoreInfo from "./pages/MoreInfo";
 import Checkout from "./pages/Checkout";
 import SmallNav from './components/SmallNav';
@@ -44,7 +44,7 @@ const [open, setOpen] = useState('');
             <FindCar />
           </Route>
           <Route path="/sellcar">
-            <Sell />
+            <AddCar />
           </Route>
           <Route path="/more-info">
             <MoreInfo/>

@@ -12,8 +12,21 @@ export const getCars = createAsyncThunk('/cars/get', async (_, thunkAPI) => {
   }
 });
 
+export const addCar = createAsyncThunk('/cars/add', async (carData, thunkAPI) => {
+  try {
+      const { token } = thunkAPI.getState().auth.user;
+      return await carsService.addCar(carData, token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message;
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 const initialState = {
   cars: [],
+  car: null,
   loading: false,
   success: false,
   error: false,
@@ -38,6 +51,18 @@ const carsSlice = createSlice({
           state.error = true;
           state.message = action.payload;
       })
+      .addCase(addCar.pending, (state) => {
+        state.loading = true;
+    })
+    .addCase(addCar.fulfilled, (state, action) => {
+        state.loading = false;
+        state.car = action.payload;
+    })
+    .addCase(addCar.rejected, (state, action) => {
+        state.loading = false;
+        state.error = true;
+        state.message = action.payload;
+    })
   }
 });
 

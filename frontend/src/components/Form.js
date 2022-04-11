@@ -80,20 +80,6 @@ function Form({submitForm}) {
         />
       </div>
       <div className="form__inputs">
-        <label htmlFor="vin" className="form__label">
-          Vehicle identification number
-        </label>
-        <input
-          type="text"
-          name="vin"
-          className="form__input"
-          placeholder="vin"
-          value={values.vin}
-          onChange={handleChange}
-        />
-        {errors.vin && <p>{errors.vin}</p>}
-      </div>
-      <div className="form__inputs">
         <label htmlFor="price" className="form__label">
           Price
         </label>

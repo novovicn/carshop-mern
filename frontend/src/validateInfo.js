@@ -16,11 +16,6 @@ export default function validateInfo(values) {
     }else if(values.year.trim() >2021 || values.year.trim() < 1900){
         errors.year = 'Please input correct year'
     }
-
-    if(!values.vin.trim()) {
-        errors.vin = 'VIN required';
-    }
-
     if(!values.price.trim()) {
         errors.price = 'Price required';
     }

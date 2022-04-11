@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "../components/Form";
-import "./Sell.css";
+import "./AddCar.css";
 
 function Sell() {
   const [isSubmitted, setIsSubmitted] = useState(false);

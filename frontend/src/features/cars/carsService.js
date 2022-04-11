@@ -7,9 +7,21 @@ const getCars = async () => {
   return response.data;
 };
 
+const addCar = async (carData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+  const response = await axios.post(API_URL, carData, config);
+
+  return response.data;
+};
+
 
  const carsService = {
      getCars,
+     addCar
  }
 
  export default carsService
