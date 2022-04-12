@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './CarDetails.css'
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { getSingleCar } from "../features/cars/carsSlice";
 
 function CarDetails({match, history}) {
 
   const dispatch = useDispatch();
+  const { car, loading, success, error, message  } = useSelector(state => state.cars);
   
   useEffect(() => {
     dispatch(getSingleCar(match.params.id))
   }, [])
 
-  const { car, loading, success, error, message  } = useSelector(state => state.cars);
 
-  const handleBack = () => {
-    history.replace("/cars");
-  };
+  if(loading){
+    return <Spinner />
+  }
 
   return (
     <div className="moreInfo">
-      <button onClick={handleBack} className="moreInfo__cancel">
+      <Link to="/cars">
         BACK
-      </button>
+      </Link>
       <div className="moreInfo__car">
         <div className="moreInfo__image">
           <img src={car.image} alt="" />
@@ -41,7 +41,7 @@ function CarDetails({match, history}) {
             <span className="bold">Year:</span> {car.year}
           </p>
           <p>
-            <span className="bold">Owner:</span> {car.owner}
+            <span className="bold">Owner:</span> {car?.owner?.name}
           </p>
           <p>
             <span className="bold">Mileage:</span> {car.mileage}

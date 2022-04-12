@@ -34,7 +34,7 @@ const getCars = asyncHandler(async (req, res) => {
 });
 
 const getSingleCar = asyncHandler(async (req, res) => {
-  const car = await Car.findById(req.params.id);
+  const car = await Car.findById(req.params.id).populate('owner', 'id name');
   
   if(car){
     res.status(200).json(car);

@@ -1,26 +1,26 @@
 import React from "react";
 import "./Header.css";
 import logo from "../img/logobmw1.png";
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
-function Header(props) {
+function Header() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
 
   const userLogout = () => {
-    if(props.user){
-      props.onLogUserOut(null);
-    }
+    
   }
 
   return (
     <div className="header">
       <div className="header__firstRow">
         <img className="header__logo" src={logo} />
-        <p>Hello, {props.user? props.user : "guest."}</p>
+        <p>Hello, {user? user.name : "guest."}</p>
         <div className="header__auth">
-          <Link to={!props.user && "/auth"}>
+          <Link to={!user && "/auth"}>
             <button onClick={userLogout} className="header__authBtn">
-              {props.user ? "Logout" : "Login"}
+              {user ? "Logout" : "Login"}
             </button>
           </Link>
         </div>
@@ -36,16 +36,5 @@ function Header(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return{
-    user: state.user
-  };
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onLogUserOut: (authUser) => dispatch({type: 'SET_USER', user: authUser}),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
