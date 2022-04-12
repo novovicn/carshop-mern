@@ -3,14 +3,11 @@ import "./Header.css";
 import logo from "../img/logobmw1.png";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
+import { logout } from "../features/auth/authSlice";
 
 function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.auth)
-
-  const userLogout = () => {
-    
-  }
 
   return (
     <div className="header">
@@ -19,7 +16,7 @@ function Header() {
         <p>Hello, {user? user.name : "guest."}</p>
         <div className="header__auth">
           <Link to={!user && "/auth"}>
-            <button onClick={userLogout} className="header__authBtn">
+            <button onClick={() => dispatch(logout())} className="header__authBtn">
               {user ? "Logout" : "Login"}
             </button>
           </Link>
