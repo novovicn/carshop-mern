@@ -1,34 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { deleteCar } from '../features/cars/carsSlice';
 import './Car.css'
 
-
-
 function Car(props) {
-
+    const { user } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
     const history = useHistory();
 
-    const addCarToState = () => {
-        let car = {
-            id:props.id,
-            image:props.image,
-            vin:props.vin,
-            brand:props.brand,
-            mileage: props.mileage,
-            model:props.model,
-            owner:props.owner,
-            price:props.price,
-            sold:props.sold,
-            year:props.year,
-        } 
-        console.log(car);
-        props.onSetCar(car);
-
-    }
-
     const mainButton = () => {
-        if(props.owner === props.user){
+        if(props.owner === user._id){
             return <button onClick={handleDelete} className="car__mainBtn">DELETE</button>
         }else if(!props.user){
             return null
@@ -42,19 +24,17 @@ function Car(props) {
     const sold = props.sold? <div className='sold'>SOLD</div> : null;
 
     const handleDelete = () => {
-        let ask = window.confirm('Are you sure you want to delete?')
-        if(!ask){
-            return 
+        let confirm = window.confirm('Are you sure you want to delete?')
+        if(confirm){
+            dispatch(deleteCar(props.id));
         }
     }
 
     const handleBuy = () => {
-        addCarToState();
         history.push('/checkout');
     }
 
     const handleMoreInfo = () => {
-        addCarToState();
         history.push(`/cars/${props.id}`);
     }
 
@@ -74,18 +54,4 @@ function Car(props) {
     )
 }
 
-
-
-const mapStateToProps = state => {
-    return{
-      user: state.user
-    };
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSetCar: (car) => dispatch({type: 'SET_CAR', car: car}),
-      }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Car)
+export default Car;

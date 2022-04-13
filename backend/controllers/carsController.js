@@ -8,8 +8,7 @@ const addCar = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('Please populate all required fields');
   }
-
-  console.log(req.userId);
+  
   const car = await Car.create({
     owner: req.userId,
     brand,
@@ -44,8 +43,19 @@ const getSingleCar = asyncHandler(async (req, res) => {
   }
 });
 
+const deleteCar = asyncHandler(async (req, res) => {
+  const removedCar = await Car.deleteOne({_id: req.params.id})
+  if(removedCar.deletedCount > 0){
+    res.status(200).json('Car removed successfully');
+  }else{
+    res.status(400)
+    throw new Error('Car not found');
+  }
+});
+
 module.exports = {
   addCar,
   getCars,
-  getSingleCar
+  getSingleCar,
+  deleteCar
 };

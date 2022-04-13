@@ -12,6 +12,16 @@ const getSingleCar = async (id) => {
   return response.data;
 };
 
+const deleteCar = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+  const response = await axios.delete(API_URL+id, config);
+  return response.data;
+};
+
 const addCar = async (carData, token) => {
   const config = {
     headers: {
@@ -26,7 +36,8 @@ const addCar = async (carData, token) => {
  const carsService = {
      getCars,
      getSingleCar,
-     addCar
+     addCar,
+     deleteCar
  }
 
  export default carsService
