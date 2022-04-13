@@ -10,10 +10,10 @@ function Car(props) {
     const history = useHistory();
 
     const mainButton = () => {
-        if(props.owner === user._id){
-            return <button onClick={handleDelete} className="car__mainBtn">DELETE</button>
-        }else if(!props.user){
+        if(!user){
             return null
+        }else if(props.owner === user._id){
+            return <button onClick={handleDelete} className="car__mainBtn">DELETE</button>
         }else if(!props.sold){
             return <button onClick={handleBuy} className="car__mainBtn">BUY</button>
         }else{
