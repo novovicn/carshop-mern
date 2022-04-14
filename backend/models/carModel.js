@@ -29,6 +29,8 @@ const carShcema = mongoose.Schema({
         type: Number, 
         required: true
     }
+},{
+    timestamps: true
 })
 
 const Car = mongoose.model('Car', carShcema);
