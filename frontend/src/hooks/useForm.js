@@ -9,7 +9,7 @@ const useForm = (callback, validate) => {
     brand: '',
     model: '',
     year: '',
-    imageURL: '',
+    image: '',
     mileage: '',
     price: '',
   });

@@ -54,14 +54,14 @@ function Form({submitForm}) {
         {errors.year && <p>{errors.year}</p>}
       </div>
       <div className="form__inputs">
-        <label htmlFor="imageURL" className="form__label">
+        <label htmlFor="image" className="form__label">
           Image URL
         </label>
         <input
           type="text"
-          name="imageURL"
+          name="image"
           className="form__input"
-          placeholder="imageURL"
+          placeholder="image"
           value={values.imageURL}
           onChange={handleChange}
         />
