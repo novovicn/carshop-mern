@@ -14,7 +14,7 @@ function Sell() {
 
   useEffect(() => {
     if(!user){
-      history.push('/auth');
+      history.push('/auth?redirect=sellcar');
     }
   }, [user])
 

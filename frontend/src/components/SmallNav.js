@@ -21,7 +21,7 @@ const [open, setOpen] = useState('open');
           </Link>
         </li>
         <li className="smallNav__item">
-          <Link  to="/findcar">
+          <Link  to="/cars">
             FIND CAR
           </Link>
         </li>

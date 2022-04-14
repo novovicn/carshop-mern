@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUser, login } from '../features/auth/authSlice';
 import './Auth.css';
 
-function Auth(props) {
+function Auth() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState('');
   const [isReg, setIsReg] = useState(false);
+
+  const { user } = useSelector(state => state.auth);
+
+  const location = useLocation();
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  useEffect(() => {
+    if(user){
+      history.push(redirect);
+    }
+  }, [user])
 
   const changeReg = () => {
     setIsReg(!isReg);
