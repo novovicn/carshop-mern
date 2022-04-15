@@ -4,6 +4,7 @@ import './CarDetails.css'
 import { useHistory, useLocation, Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { getSingleCar } from "../features/cars/carsSlice";
+import { FaArrowLeft } from 'react-icons/fa'
 
 function CarDetails({match, history}) {
 
@@ -22,7 +23,7 @@ function CarDetails({match, history}) {
   return (
     <div className="moreInfo">
       <Link to="/cars">
-        BACK
+        <FaArrowLeft/>
       </Link>
       <div className="moreInfo__car">
         <div className="moreInfo__image">
@@ -30,7 +31,6 @@ function CarDetails({match, history}) {
         </div>
         <div className="moreInfo__text">
           <h1 className="car-details-big">Car details</h1>
-          <br />
           <p>
             <span className="bold">Brand:</span> {car.brand}
           </p>
@@ -45,9 +45,6 @@ function CarDetails({match, history}) {
           </p>
           <p>
             <span className="bold">Mileage:</span> {car.mileage}
-          </p>
-          <p>
-            <span className="bold">VIN:</span> {car.vin}
           </p>
           <h1 className="car-details-big">
             <span className="bold">Price:</span> {car.price} €

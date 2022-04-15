@@ -45,9 +45,9 @@ function Auth() {
   console.log(error);
   return (
     <div className="auth">
-      {error && <h1>{message}</h1>}
       <div className="auth__container">
         <h1>{isReg ? 'Sign up' : 'Sign in'}</h1>
+        {error && <h5 className='auth-error'>{message}</h5>}
         <form>
           {isReg && (
             <input
