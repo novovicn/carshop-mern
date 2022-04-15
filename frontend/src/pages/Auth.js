@@ -7,11 +7,16 @@ import './Auth.css';
 function Auth() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState('');
   const [isReg, setIsReg] = useState(false);
 
-  const { user } = useSelector(state => state.auth);
+  const { user, error, message } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    console.log(error);
+  }, [user, error])
 
   const location = useLocation();
   const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -34,15 +39,25 @@ function Auth() {
   const register = (e) => {
     e.preventDefault();
     //TODO: create name field
-    const name = 'Test Name'
     dispatch(registerUser({name, email, password}));
   };
 
+  console.log(error);
   return (
     <div className="auth">
+      {error && <h1>{message}</h1>}
       <div className="auth__container">
         <h1>{isReg ? 'Sign up' : 'Sign in'}</h1>
         <form>
+          {isReg && (
+            <input
+            type="text"
+            className="auth__input"
+            value={name}
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          )}
           <input
             type="text"
             className="auth__input"
