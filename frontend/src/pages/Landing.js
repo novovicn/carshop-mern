@@ -1,6 +1,8 @@
 import React from "react";
 import "./Landing.css";
 import newsImg from "../img/car-news.jpg";
+import { Link } from "react-router-dom";
+
 
 function Landing() {
   return (
@@ -13,7 +15,7 @@ function Landing() {
             second hand car shop.
           </p>
           <div className="line"></div>
-          <a href="./carlist.html">EXPLORE</a>
+          <Link to="/cars">EXPLORE</Link>
         </div>
       </div>
       <div className="landing__news">

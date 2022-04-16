@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header__firstRow">
-        <img className="header__logo" src={logo} />
+        <img className="header__logo" src={logo} alt='carshop logo'/>
         <p>Hello, {user? user.name : "guest."}</p>
         <div className="header__auth">
           <Link to={!user && "/auth"}>

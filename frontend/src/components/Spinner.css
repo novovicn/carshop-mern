@@ -1,8 +1,17 @@
+.spinner-container{
+    width: auto;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
 .spinner{
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
-    left: 50vw;
+    left: 50%;
     margin-top: -2.5rem;
     margin-left: -2.5rem;
     border-top: 4px solid red;

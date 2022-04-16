@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './CarDetails.css'
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { getSingleCar } from "../features/cars/carsSlice";
 import { FaArrowLeft } from 'react-icons/fa'
 
-function CarDetails({match, history}) {
+function CarDetails({match}) {
 
   const dispatch = useDispatch();
   const { car, loading, success, error, message  } = useSelector(state => state.cars);
