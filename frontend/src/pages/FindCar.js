@@ -3,12 +3,10 @@ import { useDispatch } from 'react-redux'
 import Cars from '../components/Cars'
 import Heading from '../components/Heading'
 import { getCars } from '../features/cars/carsSlice';
-import { useSearchParams } from 'react-router-dom';
 
-function FindCar({match, location}) {
+function FindCar({location}) {
     const dispatch = useDispatch();
 
-    
     const page = location.search.split('=')[1];
     useEffect(() => {
         dispatch(getCars(page))

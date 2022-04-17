@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { deleteCar } from '../features/cars/carsSlice';
+import { deleteCar } from '../features/cars/carSlice';
 import './Car.css'
 
 function Car(props) {

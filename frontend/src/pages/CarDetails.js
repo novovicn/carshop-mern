@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import './CarDetails.css'
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
-import { getSingleCar } from "../features/cars/carsSlice";
+import { getSingleCar } from "../features/cars/carSlice";
 import { FaArrowLeft } from 'react-icons/fa'
 
 function CarDetails({match}) {
 
   const dispatch = useDispatch();
-  const { car, loading, success, error, message  } = useSelector(state => state.cars);
+  const { car, loading, success, error, message  } = useSelector(state => state.car);
   
   useEffect(() => {
     dispatch(getSingleCar(match.params.id))

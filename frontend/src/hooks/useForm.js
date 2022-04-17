@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addCar } from '../features/cars/carsSlice';
+import { addCar } from '../features/cars/carSlice';
 
 const useForm = (callback, validate) => {
   const dispatch = useDispatch();
