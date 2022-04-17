@@ -12,7 +12,6 @@ export const getCars = createAsyncThunk('/cars/get', async (page, thunkAPI) => {
   }
 });
 
-
 const initialState = {
   cars: [],
   loading: false,
@@ -33,7 +32,9 @@ const carsSlice = createSlice({
       })
       .addCase(getCars.fulfilled, (state, action) => {
         state.loading = false;
-        state.cars = action.payload;
+        state.cars = action.payload.cars;
+        state.pages = action.payload.pages;
+        state.page = action.payload.page;
       })
       .addCase(getCars.rejected, (state, action) => {
         state.loading = false;

@@ -1,20 +1,20 @@
 import React from 'react';
 import './Pagination.css';
 
-export const Pagination = ({ postsPerPage, totalPosts, paginate}) => {
-    const pageNumbers = [];
+export const Pagination = ({ pages, currentPage }) => {
+  console.log(currentPage);
 
-    for(let i =1; i <= Math.ceil(totalPosts / postsPerPage); i++){
-        pageNumbers.push(i);
-    }
-
-    return (
-        <div className="pagination">
-                {pageNumbers.map(number => (
-                    <button onClick={() => paginate(number)} key={number} className="pagination__btn">
-                        {number}
-                    </button>
-                ))}
-        </div>
-    )
-}
+  return (
+    <div className="pagination">
+      {[...Array(pages).keys()].map((page) => (
+        <a
+          href={`/cars?page=${page + 1}`}
+          key={page + 1}
+          className={page + 1 == currentPage ? 'pagination__btn active' : 'pagination__btn'}
+        >
+          {page + 1}
+        </a>
+      ))}
+    </div>
+  );
+};

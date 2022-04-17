@@ -1,9 +1,19 @@
-.pagination > button{
-    height: 30px;
-    width: 30px;
+.pagination > a{
+    height: 40px;
+    width: 40px;
     margin: 3px;
     cursor: pointer;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+}
+
+.pagination > a.active{
+    background-color: black;
+    color: white;
 }

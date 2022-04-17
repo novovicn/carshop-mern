@@ -38,7 +38,7 @@ const getCars = asyncHandler(async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
-  res.status(200).json(cars, page, pages);
+  res.status(200).json({cars, page, pages});
 });
 
 const getSingleCar = asyncHandler(async (req, res) => {
