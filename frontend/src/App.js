@@ -40,9 +40,7 @@ const [open, setOpen] = useState('');
           <Route path="/auth">
             <Auth />
           </Route>
-          <Route path="/cars" exact>
-            <FindCar />
-          </Route>
+          <Route path="/cars" component={FindCar} exact />
           <Route path="/sellcar">
             <AddCar />
           </Route>

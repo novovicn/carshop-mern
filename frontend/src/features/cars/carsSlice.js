@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import carsService from './carsService';
 
-export const getCars = createAsyncThunk('/cars/get', async (_, thunkAPI) => {
+export const getCars = createAsyncThunk('/cars/get', async (page, thunkAPI) => {
   try {
-    return await carsService.getCars();
+    return await carsService.getCars(page);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
