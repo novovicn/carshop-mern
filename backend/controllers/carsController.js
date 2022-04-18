@@ -30,7 +30,6 @@ const addCar = asyncHandler(async (req, res) => {
 const getCars = asyncHandler(async (req, res) => {
   const pageSize = 6;
   const page = req.query.page || 1;
-
   const count = await Car.countDocuments({});
   const pages = Math.ceil(count / pageSize);
   const cars = await Car.find()

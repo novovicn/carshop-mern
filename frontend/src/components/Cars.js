@@ -9,6 +9,8 @@ function Cars() {
 
   const { cars, loading, pages, page, error } = useSelector(state => state.cars);
 
+  const currentPage = page? page : 1;
+
   if(cars && cars.length === 0){
     return <p> No cars available at the moment! You can change this by adding one <Link to='/sellcar'>here</Link></p>
   }
@@ -36,7 +38,7 @@ function Cars() {
         ))
       }
       </div>
-      <Pagination pages={pages} currentPage={page} />
+      <Pagination pages={pages} currentPage={currentPage} />
     </div>
   );
 }

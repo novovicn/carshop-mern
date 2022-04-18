@@ -7,7 +7,7 @@ import { getCars } from '../features/cars/carsSlice';
 function FindCar({location}) {
     const dispatch = useDispatch();
 
-    const page = location.search.split('=')[1];
+    const page = location.search.split('=')[1] || 1;
     useEffect(() => {
         dispatch(getCars(page))
     }, [])
