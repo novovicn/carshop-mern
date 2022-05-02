@@ -28,11 +28,19 @@ const addCar = asyncHandler(async (req, res) => {
 });
 
 const getCars = asyncHandler(async (req, res) => {
+  console.log(req.query.keyword && 'hello');
+  const keyword = req.query.keyword ? {
+    brand:{
+      $regex: req.query.keyword,
+      $options: 'i'
+    }
+  } : {}
+
   const pageSize = 6;
   const page = req.query.page || 1;
-  const count = await Car.countDocuments({});
+  const count = await Car.countDocuments({...keyword});
   const pages = Math.ceil(count / pageSize);
-  const cars = await Car.find()
+  const cars = await Car.find({...keyword})
     .sort({ createdAt: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
